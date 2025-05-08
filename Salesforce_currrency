@@ -1,0 +1,51 @@
+public class CurrencyConverter {
+
+    // Static exchange rates (example only, as of a past time)
+    public static final Decimal USD_TO_INR = 83.0;
+    public static final Decimal EUR_TO_INR = 90.0;
+
+    // Convert any of the 3 currencies to INR
+    public static Decimal toINR(String fromCurrency, Decimal amount) {
+        if(fromCurrency == 'USD') {
+            return amount * USD_TO_INR;
+        } else if(fromCurrency == 'EUR') {
+            return amount * EUR_TO_INR;
+        } else if(fromCurrency == 'INR') {
+            return amount;
+        } else {
+            throw new IllegalArgumentException('Unsupported currency: ' + fromCurrency);
+        }
+    }
+
+    // Convert INR to another currency
+    public static Decimal fromINR(String toCurrency, Decimal amountInINR) {
+        if(toCurrency == 'USD') {
+            return amountInINR / USD_TO_INR;
+        } else if(toCurrency == 'EUR') {
+            return amountInINR / EUR_TO_INR;
+        } else if(toCurrency == 'INR') {
+            return amountInINR;
+        } else {
+            throw new IllegalArgumentException('Unsupported currency: ' + toCurrency);
+        }
+    }
+
+    // Direct conversion between two currencies
+    public static Decimal convert(String fromCurrency, String toCurrency, Decimal amount) {
+        Decimal inINR = toINR(fromCurrency, amount);
+        return fromINR(toCurrency, inINR);
+    }
+}
+
+
+Decimal usdToInr = CurrencyConverter.convert('USD', 'INR', 100);
+System.debug('100 USD to INR: ' + usdToInr);
+
+Decimal eurToInr = CurrencyConverter.convert('EUR', 'INR', 100);
+System.debug('100 EUR to INR: ' + eurToInr);
+
+Decimal inrToUsd = CurrencyConverter.convert('INR', 'USD', 8300);
+System.debug('8300 INR to USD: ' + inrToUsd);
+
+Decimal usdToEur = CurrencyConverter.convert('USD', 'EUR', 100);
+System.debug('100 USD to EUR: ' + usdToEur);

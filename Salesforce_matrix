@@ -1,0 +1,31 @@
+public class MatrixOperations {
+
+    public static void addMatrices(Integer[][] A, Integer[][] B) {
+        Integer rows = A.size();
+        Integer cols = A[0].size();
+
+        Integer[][] result = new Integer[rows][cols];
+
+        System.debug('Matrix A + B =');
+
+        for (Integer i = 0; i < rows; i++) {
+            for (Integer j = 0; j < cols; j++) {
+                result[i][j] = A[i][j] + B[i][j];
+                System.debug('result[' + i + '][' + j + '] = ' + result[i][j]);
+            }
+        }
+    }
+}
+
+
+Integer[][] A = new Integer[][] {
+    new Integer[] {1, 2, 3},
+    new Integer[] {4, 5, 6}
+};
+
+Integer[][] B = new Integer[][] {
+    new Integer[] {6, 5, 4},
+    new Integer[] {3, 2, 1}
+};
+
+MatrixOperations.addMatrices(A, B);

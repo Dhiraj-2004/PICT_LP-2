@@ -1,0 +1,30 @@
+public class InterestCalculator {
+
+    // Method to calculate Simple Interest
+    public static Decimal calculateSimpleInterest(Decimal principal, Decimal rate, Integer years) {
+        return (principal * rate * years) / 100;
+    }
+
+    // Method to calculate Compound Interest
+    public static Decimal calculateCompoundInterest(Decimal principal, Decimal rate, Integer years) {
+        // Convert to Double for Math.pow(), then back to Decimal
+        Double principalDouble = (Double) principal;
+        Double rateDouble = (Double) rate;
+        Double compoundAmount = principalDouble * Math.pow((1 + rateDouble / 100), years);
+
+        return (Decimal.valueOf(compoundAmount)) - principal;
+    }
+
+    // Method to run the calculation and display results
+    public static void runCalculation() {
+        Decimal principal = 10000;
+        Decimal rate = 5;
+        Integer years = 2;
+
+        Decimal si = calculateSimpleInterest(principal, rate, years);
+        Decimal ci = calculateCompoundInterest(principal, rate, years);
+
+        System.debug('Simple Interest: ' + si);
+        System.debug('Compound Interest: ' + ci);
+    }
+}

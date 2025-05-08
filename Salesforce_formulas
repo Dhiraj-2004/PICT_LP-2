@@ -1,0 +1,10 @@
+Eligible for Increment: Formula (Checkbox)
+AND(
+    Paper_Publication__c >= 1,
+    Consultancy__c >= 1
+)
+
+Age Field: Formula (Number)
+FLOOR((TODAY() - DoB__c) / 365)
+Eligible to Vote Field:  Formula (Checkbox)
+Age__c >= 18

@@ -1,0 +1,17 @@
+public class FibonacciSeries {
+
+    public static void printFibonacci(Integer n) {
+        Integer a = 0, b = 1, c;
+
+        System.debug('Fibonacci Series up to ' + n + ' terms:');
+        System.debug(a);
+        if (n > 1) System.debug(b);
+
+        for (Integer i = 2; i < n; i++) {
+            c = a + b;
+            System.debug(c);
+            a = b;
+            b = c;
+        }
+    }
+}

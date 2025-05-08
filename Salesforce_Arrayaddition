@@ -1,0 +1,35 @@
+public class ArrayAddition {
+
+    // Method to perform element-wise addition of two arrays
+    public static List<Integer> addArrays(List<Integer> array1, List<Integer> array2) {
+        List<Integer> result = new List<Integer>();
+
+        // Check if arrays are of equal length
+        if (array1.size() != array2.size()) {
+            System.debug('Arrays are of different lengths. Cannot perform addition.');
+            return result;
+        }
+
+        // Perform element-wise addition
+        for (Integer i = 0; i < array1.size(); i++) {
+            result.add(array1[i] + array2[i]);
+        }
+
+        return result;
+    }
+
+    // Example method to demonstrate functionality
+    public static void testArrayAddition() {
+        List<Integer> a = new List<Integer>{1, 2, 3, 4, 5};
+        List<Integer> b = new List<Integer>{10, 20, 30, 40, 50};
+        
+        List<Integer> sum = addArrays(a, b);
+
+        System.debug('Result of Array Addition: ' + sum);
+    }
+}
+
+
+
+
+ArrayAddition.testArrayAddition();
